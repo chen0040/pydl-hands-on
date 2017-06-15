@@ -38,8 +38,9 @@ class LinearRegressionUnitTest(unittest.TestCase):
 
         print('theta: ' + str(lr.theta))
 
-        lr.transform(test_house_size_norm)
+        predicted = lr.transform(test_house_size_norm)
 
+        print('predicted: ' + str(predicted))
 
 if __name__ == '__main__':
     unittest.main()
