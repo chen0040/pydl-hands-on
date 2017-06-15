@@ -10,7 +10,9 @@ class FnnClassifierUnitTest(unittest.TestCase):
     def test_mnist(self):
         mnist = input_data.read_data_sets('../../MNIST_data/', one_hot=True)
         classifier = FnnClassifier()
-        classifier.fit(lambda _: mnist.train.next_batch(100))
+        # classifier.add_hidden_layer(10)
+        classifier.fit(mnist.train)
+        classifier.test(mnist.test.images,  mnist.test.labels)
 
 
 if __name__ == '__main__':
