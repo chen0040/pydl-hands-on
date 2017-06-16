@@ -1,8 +1,9 @@
-import unittest
-import numpy as np
 import math
+import unittest
 
-from pydl.regression.linear import LinearRegression
+import numpy as np
+
+from pydl.tensorflow.regression import LinearRegression
 
 
 def normalize(array):

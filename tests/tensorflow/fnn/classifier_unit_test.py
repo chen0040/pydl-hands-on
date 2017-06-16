@@ -1,8 +1,8 @@
-import tensorflow as tf
 import unittest
+
 from tensorflow.examples.tutorials.mnist import input_data
 
-from pydl.fnn.classifier import FnnClassifier
+from pydl.tensorflow.fnn import FnnClassifier
 
 
 class FnnClassifierUnitTest(unittest.TestCase):
