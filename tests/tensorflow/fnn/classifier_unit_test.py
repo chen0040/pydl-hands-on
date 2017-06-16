@@ -8,7 +8,7 @@ from pydl.tensorflow.fnn import FnnClassifier
 class FnnClassifierUnitTest(unittest.TestCase):
 
     def test_mnist(self):
-        mnist = input_data.read_data_sets('../../MNIST_data/', one_hot=True)
+        mnist = input_data.read_data_sets('../../../MNIST_data/', one_hot=True)
         classifier = FnnClassifier()
         # classifier.add_hidden_layer(10)
         classifier.fit(mnist.train)
