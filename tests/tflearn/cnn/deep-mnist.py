@@ -41,7 +41,7 @@ network = regression(network, optimizer='adam', learning_rate=0.01,
 
 
 num_epoch = 2
-model = tflearn.DNN(network, tensorboard_verbose=0) 
+model = tflearn.DNN(network, tensorboard_verbose=0)
 model.fit({'input': train_images}, {'target': mnist.train.labels}, n_epoch=num_epoch,
            validation_set=({'input': test_images}, {'target': mnist.test.labels}),
             show_metric=True, run_id='TFLearn_DeepMNIST')
