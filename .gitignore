@@ -2,6 +2,7 @@
 *.iml
 
 MNIST_data/
+.vagrant/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
