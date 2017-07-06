@@ -165,7 +165,11 @@ Many different scores can be used for cross-validation analysis such as:
 * Classification Problem: Precision, Recall, Fallout, F1 scores, AUC under ROC, Information Scores, Multi-criteria measurement
 * Regression Problem: RMSE, R^2, p-value, AIC, BIC
 
+For example machine learning algorithms can be evaluated using information theoretic scores such as bayesian information
+reward.
+
 These are coupled with statistical testing for hypothesis testing.
+
 
 ## Verification and Validation of Big Data Machine Learning System.
 
@@ -237,9 +241,23 @@ Example of robust testing:
 * detect system failures due to time flowing backwards, jumps
 * detect problems handling dynamic states
 
-Testing philosophy should include black swan events
+Testing philosophy should include black swan events. For example, adversarial examples can be systematically generated.
 
-# Reference paper
+# Real-time Monitoring
+
+Once the ML model has been deployed in ML systems, one needs to check to make sure the model is still having as it was 
+intended.
+
+There are two main areas to consider:
+* Model accuracy or other measures as mentioned in the cross-validation technique above. if these statistics are
+deteriorating, one needs to investigate and either re-balance (fine-tune) the model or do a full rebuild.
+* population stability: one need to compare the distribution of the model results from development and the most recent
+model run and compare the distributinos fo the model inputs from development and the most recent model run. There are
+a couple of methods for doing this:
+    * Stability Index Report 
+    * Kolmogorov-Smirnov measure
+
+# References
 
 * A Machine Learning Based Framework for Verification and Validation of Massive Scale Image Data
 * Testing and Validating Machine Learning Classifiers by Metamorphic Testing
@@ -248,6 +266,14 @@ Testing philosophy should include black swan events
 * Performance evaluation for learning algorithms
 * Challenges in autonomous vehicle testing and validation
 * A Bayesian Metric for Evaluating Machine Learning Algorithms
+* Evaluating machine learning algorithms
+* Veriﬁcation and Validation and Artiﬁcial Intelligence
+* Distributional smoothing with virtual adversarial training
+* Explaining and harnessing adversarial examples
+* Evaluating Machine Learning for Information Extraction 
+* Multiple Criteria for Evaluating Machine Learning Algorithms for Land Cover Classification from Satellite Data
+
+
 
 
 
