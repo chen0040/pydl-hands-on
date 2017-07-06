@@ -1,9 +1,9 @@
-# Introduction
+# Section 1. Introduction
 
 Verification: verifying the correctness of the machine learning's expected behavior
 Validation: validating whether the machine learning software do what it claims to be able to do.
 
-## Challenges
+## Section 1.1. Challenges
 
 ### Can humans understand how ML work?
 
@@ -61,9 +61,9 @@ At the system level, a big data system can be verified and validated using regul
 techniques. However, regular system verification and validation approaches are not good enough for ensuring the quality
 of the essential components in a big data system: big data, machine learning and "non-testable" software components.
 
-# Approaches
+# Section 2. Approaches
 
-## Synthetic Testing versus Real-time Monitoring
+## Section 2.1 Synthetic Testing versus Real-time Monitoring
 
 Majority of testing is done in the synthetic testing in which prepared data are fed to machine learning system to verify
 and validate. 
@@ -73,7 +73,7 @@ have been deployed and its behavior need to be monitor for correctness verificat
 for fully autononmous vehicle verification and validation, run-time safety monitors using traditional high-ASIL softwares
 can be used. 
 
-# Approaches in Synthetic Testing
+# Section 3. Approaches in Synthetic Testing
 
 * metamorphic testing: metamorphic testing does not directly verify whether the correctness of each individual testing results; instead it 
 checks whether they satisfy certain expected properties
@@ -86,7 +86,7 @@ learning-based approach.
 * Accelerated Stress testing via fault injection
 * Robust Testing
 
-## Metamorphic Testing
+## Section 3.1. Metamorphic Testing
 
 Metamorphic testing aims to detect faults in machine learning softwares without test oracles. 
 
@@ -128,7 +128,7 @@ samples
 * Removal of samples: prediction output should remain unchanged for this case.
 
 
-## Mutation Analysis
+## Section 3.2 Mutation Analysis
 
 Mutation analysis is used for evaluation of effectivenss of machine learning softwares.
 
@@ -155,7 +155,7 @@ operators.
 ...
 * ASR: Short-Cut Assignment Operator Replacement
 
-## Cross-validation Analysis
+## Section 3.3 Cross-validation Analysis
 
 Cross-validation analysis can be used to detect anomaly in machine learning softwares by checking the performance 
 consistency of the machine learning softwares over cross-validation strategies.
@@ -171,7 +171,7 @@ reward.
 These are coupled with statistical testing for hypothesis testing.
 
 
-## Verification and Validation of Big Data Machine Learning System.
+## Section 3.4 Verification and Validation of Big Data Machine Learning System.
 
 This technique aims to verify and validate big data machine learning system.
 
@@ -192,7 +192,7 @@ The automatic selection and validation of big data can be done in the following 
 The verification and validation of machine learning and "non-testable" system parts can be done via metamorphic testing
 and iterative metamorphic testing.
 
-## Machine Learning approach to Data Analytics Software Testing
+## Section 3.5 Machine Learning approach to Data Analytics Software Testing
 
 Machine learning can be used to build software testing automation for data analytics softwares. Such an approach can 
 assist developers to improve their test strategy in verification and validation of a data analytics software 
@@ -230,7 +230,7 @@ of the software testing processing for software development life-cycle. The lear
 software specification, CFG (control flow graph), call graph, test case, execution data, failure reports, and/or coverage
 data.
 
-## Stress Testing and Robustness Testing
+## Section 3.6 Stress Testing and Robustness Testing
 
 Traditional approaches for testing on critical systems can also be used to test data analytics softwares.
 
@@ -243,7 +243,7 @@ Example of robust testing:
 
 Testing philosophy should include black swan events. For example, adversarial examples can be systematically generated.
 
-# Real-time Monitoring
+# Section 4. Real-time Monitoring
 
 Once the ML model has been deployed in ML systems, one needs to check to make sure the model is still having as it was 
 intended.
@@ -257,7 +257,7 @@ a couple of methods for doing this:
     * Stability Index Report 
     * Kolmogorov-Smirnov measure
 
-# References
+# Section 5. References
 
 * A Machine Learning Based Framework for Verification and Validation of Massive Scale Image Data
 * Testing and Validating Machine Learning Classifiers by Metamorphic Testing
