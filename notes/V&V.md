@@ -5,6 +5,21 @@ Validation: validating whether the machine learning software do what it claims t
 
 ## Challenges
 
+### Can humans understand how ML work?
+
+Machine learning "learns" from training data, in which results can be intuitively interpreted as weighted combination
+of "features". Many machine learning systems are very complex, in other words, such as weighting is inscrutible comming from
+these machine learning systems, or at least not intuitive. As a result, there is an unknown (significant?) chances
+that results are brittle. For example, due to accidental correlation in trainning data, or sensitivity to noise.
+
+This can be very dangerous for having ML perform life-critical tasks, e.g., driving a fully autonomous car.
+
+Many ML approaches have random number generators, in unit test case, if one carefully control the random number generator
+it may be possible to reproduce all behaviors. However, such ML is generally sensitive to initial conditions at system
+level. which implies that it can be essentially impossible to get test reproducibility in real systems. In fact,
+significant effort in many real-world ML systems are used to force or "trick" ML into displaying desired behavior.
+
+
 ### Oracle Problem
 It is difficult to detect faults in machine learning applications because often there is no "test oracle" to verify the 
 correctness of the computed outputs.
@@ -31,6 +46,10 @@ and varieties of big data create a grand challenges for the selection and valida
 has shown that abnormal data existing in datasets could substantially decrease the performance of data analysis 
 softwares.
 
+Furthermore, there may not be a way to know that the training data is "completed". for life-critical system, the training
+data must be safety critical and people's perception of "almost the same" does not necessarily predict ML responses.
+
+
 ### Big Data Integration with Machine Learning
 
 The machine learning algorithms used for processing big data are difficult to be validated given the volume of data
@@ -50,7 +69,9 @@ Majority of testing is done in the synthetic testing in which prepared data are 
 and validate. 
 
 Real-time monitoring is more appropriate during the stage of "software maintenance" in which the data analytics softwares
-have been deployed and its behavior need to be monitor for correctness verification and quality validation.
+have been deployed and its behavior need to be monitor for correctness verification and quality validation. For example,
+for fully autononmous vehicle verification and validation, run-time safety monitors using traditional high-ASIL softwares
+can be used. 
 
 # Approaches in Synthetic Testing
 
@@ -62,7 +83,8 @@ checks whether they satisfy certain expected properties
 machine learning softwares as well as verification and validation of machine learning software on big data.
 * Machine learning-based approach for verification and validation: data analytics softwares can be tested using machine
 learning-based approach.
-
+* Accelerated Stress testing via fault injection
+* Robust Testing
 
 ## Metamorphic Testing
 
@@ -138,6 +160,13 @@ operators.
 Cross-validation analysis can be used to detect anomaly in machine learning softwares by checking the performance 
 consistency of the machine learning softwares over cross-validation strategies.
 
+Many different scores can be used for cross-validation analysis such as:
+
+* Classification Problem: Precision, Recall, Fallout, F1 scores, AUC under ROC, Information Scores, Multi-criteria measurement
+* Regression Problem: RMSE, R^2, p-value, AIC, BIC
+
+These are coupled with statistical testing for hypothesis testing.
+
 ## Verification and Validation of Big Data Machine Learning System.
 
 This technique aims to verify and validate big data machine learning system.
@@ -197,6 +226,19 @@ of the software testing processing for software development life-cycle. The lear
 software specification, CFG (control flow graph), call graph, test case, execution data, failure reports, and/or coverage
 data.
 
+## Stress Testing and Robustness Testing
+
+Traditional approaches for testing on critical systems can also be used to test data analytics softwares.
+
+Example of robust testing:
+
+* detect system failures due to improper handling of floating-point numbers in ML systems
+* detect system failures due to array indexing and allocation
+* detect system failures due to time flowing backwards, jumps
+* detect problems handling dynamic states
+
+Testing philosophy should include black swan events
+
 # Reference paper
 
 * A Machine Learning Based Framework for Verification and Validation of Massive Scale Image Data
@@ -204,6 +246,8 @@ data.
 * Machine Learning-based Software Testing: Towards a Classiﬁcation Framework
 * The Application of Machine Learning Methods in Software Verification and Validation 
 * Performance evaluation for learning algorithms
+* Challenges in autonomous vehicle testing and validation
+* A Bayesian Metric for Evaluating Machine Learning Algorithms
 
 
 
