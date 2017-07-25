@@ -9,7 +9,6 @@ Vagrant.configure("2") do |config|
         python.vm.hostname = "python"
     end
 
-    config.vm.synced_folder "tests/", "/home/vagrant/tests", owner:"vagrant", group: "vagrant"
     config.vm.synced_folder "pydl/", "/home/vagrant/pydl", owner:"vagrant", group: "vagrant"
 
     # VirtualBox specific settings
