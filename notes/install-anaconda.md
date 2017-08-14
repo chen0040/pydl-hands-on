@@ -2,5 +2,6 @@ Anaconda is a must have on windows, after it is installed, you can install other
 
 ```bash
 conda install -c conda-forge keras
+conda install -c conda-forge cv2
 conda install -c conda-forge tensorflow
 ```
