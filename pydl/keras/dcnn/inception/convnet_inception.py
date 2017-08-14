@@ -6,7 +6,7 @@ from keras.layers import Flatten, Dropout
 from keras.optimizers import SGD
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
-img_width, img_height = 256, 256
+img_width, img_height = 299, 299
 
 train_data_dir = "data/train"
 validation_data_dir = "data/val"
@@ -14,6 +14,7 @@ nb_train_samples = 4125
 nb_validation_samples = 466
 batch_size = 16
 epochs = 50
+nb_classes = 200
 
 base_model = InceptionV3(weights='imagenet', include_top=False)
 
@@ -25,7 +26,7 @@ x = Flatten()(x)
 x = Dense(1024, activation="relu")(x)
 x = Dropout(0.5)(x)
 x = Dense(1024, activation="relu")(x)
-predictions = Dense(16, activation="softmax")(x)
+predictions = Dense(nb_classes, activation="softmax")(x)
 
 # creating the final model
 model_final = Model(input=base_model.input, output=predictions)
