@@ -7,7 +7,7 @@ from keras.optimizers import Adam, RMSprop
 
 import matplotlib.pyplot as plt
 
-IMG_CHANNELS = 10
+IMG_CHANNELS = 3
 IMG_ROWS = 32
 IMG_COLS = 32
 
@@ -32,9 +32,9 @@ X_train /= 255
 X_test /= 255
 
 model = Sequential()
-model.add(Conv2D(32, kernel_size=3, padding="same", input_shape=(IMG_ROWS, IMG_COLS, IMG_CHANNELS)))
+model.add(Conv2D(32, kernel_size=(3, 3), padding="same", input_shape=(IMG_ROWS, IMG_COLS, IMG_CHANNELS)))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 
 model.add(Flatten())
@@ -62,7 +62,7 @@ model.save_weights('/tmp/cifar10_weights.h5', overwrite=True)
 # list all data in history
 print(history.history.keys())
 # summarize history for accuracy
-plt.plot(history.history['val_acc']);
+plt.plot(history.history['val_acc'])
 plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
