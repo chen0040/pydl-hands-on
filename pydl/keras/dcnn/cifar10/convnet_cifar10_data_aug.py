@@ -53,7 +53,11 @@ model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer=OPTIM, metrics=['accuracy'])
 
 datagen.fit(X_train)
-history = model.fit_generator(datagen.flow(X_train, y_train, batch_size=BATCH_SIZE), steps_per_epoch=X_train.shape[0], epochs=EPOCHS, validation_steps=VALIDATION_SPLIT, verbose=VERBOSE)
+history = model.fit_generator(datagen.flow(X_train, y_train, batch_size=BATCH_SIZE),
+                              samples_per_epoch=X_train.shape[0],
+                              epochs=EPOCHS,
+                              validation_steps=VALIDATION_SPLIT,
+                              verbose=VERBOSE)
 
 
 print('Testing...')
