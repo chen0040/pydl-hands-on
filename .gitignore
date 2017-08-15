@@ -1,6 +1,9 @@
 .idea/
 *.iml
 
+pydl/cache/*
+!pydl/cache/ReadMe.md
+
 MNIST_data/
 .vagrant/
 
