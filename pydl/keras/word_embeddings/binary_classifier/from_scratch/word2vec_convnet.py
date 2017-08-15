@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import nltk
 import numpy as np
 
-INPUT_FILE = '../../../data/umich-sentiment-train.txt'
+INPUT_FILE = '../../../../data/umich-sentiment-train.txt'
 VOCAB_SIZE = 5000
 EMBED_SIZE = 100
 NUM_FILTERS = 256
@@ -23,7 +23,7 @@ VERBOSE = 1
 np.random.seed(42)
 
 counter = collections.Counter()
-fin = open(INPUT_FILE, "rt")
+fin = open(INPUT_FILE, "rt", encoding="utf8")
 maxlen = 0
 for line in fin:
     _, sent = line.strip().split("\t")
@@ -41,7 +41,7 @@ vocab_sz = len(word2index) + 1
 index2word = {v: k for k, v in word2index.items()}
 
 xs, ys = [], []
-fin = open(INPUT_FILE, 'rt')
+fin = open(INPUT_FILE, 'rt', encoding="utf8")
 for line in fin:
     label, sent = line.strip().split('\t')
     ys.append(label)
@@ -57,7 +57,7 @@ print(Xtrain.shape, Xtest.shape, Ytrain.shape, Ytest.shape)
 
 model = Sequential()
 model.add(Embedding(input_dim=vocab_sz, output_dim=EMBED_SIZE, input_length=maxlen))
-model.add(SpatialDropout1D(Dropout(0.2)))
+model.add(SpatialDropout1D(0.2))
 model.add(Conv1D(filters=NUM_FILTERS, kernel_size=NUM_WORDS, activation='relu'))
 model.add(GlobalMaxPooling1D())
 model.add(Dense(2, activation='softmax'))
