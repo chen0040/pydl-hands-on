@@ -5,14 +5,17 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import UpSampling2D,Conv2D, MaxPooling2D
 from keras.optimizers import SGD
 from keras.datasets import mnist
+from keras import backend as K
 import numpy as np
 from PIL import Image
 import argparse
 import math
 
+K.set_image_dim_ordering('tf')
+
 def generator_model():
     model = Sequential()
-    model.add(Dense(1024, input_dim=100))
+    model.add(Dense(output_dim=1024, input_dim=100))
     model.add(Activation('tanh'))
     model.add(Dense(128*7*7))
     model.add(BatchNormalization())
@@ -54,14 +57,14 @@ def combine_images(generated_images):
     num = generated_images.shape[0]
     width = int(math.sqrt(num))
     height = int(math.ceil(float(num)/width))
-    shape = generated_images.shape[2:]
+    shape = generated_images.shape[1:]
     image = np.zeros((height*shape[0], width*shape[1]),
                      dtype=generated_images.dtype)
     for index, img in enumerate(generated_images):
         i = int(index/width)
         j = index % width
         image[i*shape[0]:(i+1)*shape[0], j*shape[1]:(j+1)*shape[1]] = \
-            img[0, :, :]
+            img[:, :, 0]
     return image
 
 
@@ -95,6 +98,12 @@ def train(BATCH_SIZE):
                 image = image*127.5+127.5
                 Image.fromarray(image.astype(np.uint8)).save(
                     str(epoch)+"_"+str(index)+".png")
+            image_batch = np.transpose(image_batch, (0, 2, 3, 1))
+            if index % 20 == 0:
+                image_real = combine_images(image_batch)
+                image_real = image_real * 127.5 + 127.5
+                Image.fromarray(image_real.astype(np.uint8)).save(
+                    "target" + str(epoch) + "_" + str(index) + ".png")
             X = np.concatenate((image_batch, generated_images))
             y = [1] * BATCH_SIZE + [0] * BATCH_SIZE
             d_loss = discriminator.train_on_batch(X, y)
