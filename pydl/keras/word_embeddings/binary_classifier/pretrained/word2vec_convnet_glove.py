@@ -12,7 +12,7 @@ import numpy as np
 np.random.seed(42)
 
 INPUT_FILE = '../../../../data/umich-sentiment-train.txt'
-WORD2VEC_MODEL = "../../../../data/GoogleNews-vectors-negative300.bin.gz"
+GLOVE_MODEL = "../../../../data/glove.6B.100d.txt"
 VOCAB_SIZE = 5000
 EMBED_SIZE = 100
 NUM_FILTERS = 256
@@ -52,8 +52,16 @@ fin.close()
 W = pad_sequences(ws, maxlen=maxlen)
 Y = np_utils.to_categorical(ys)
 
-# load pre-trained word2vec model
-word2vec = KeyedVectors.load_word2vec_format(WORD2VEC_MODEL, binary=True)
+# load GloVe vectors
+print("loading GloVe vectors...")
+word2emb = collections.defaultdict(int)
+fglove = open(GLOVE_MODEL, "rb")
+for line in fglove:
+    cols = line.strip().split()
+    word = cols[0]
+    embedding = np.array(cols[1:], dtype="float32")
+    word2emb[word] = embedding
+fglove.close()
 
 # transform X using word2vec lookup
 X = np.zeros((W.shape[0], EMBED_SIZE))
@@ -62,7 +70,7 @@ for i in range(W.shape[0]):
     words = [index2word[wid] for wid in W[i].tolist()]
     for j in range(maxlen):
         try:
-            E[:, j] = word2vec[words[j]]
+            E[:, j] = word2emb[words[j]]
         except KeyError:
             pass
     X[i, :] = np.sum(E, axis=1)

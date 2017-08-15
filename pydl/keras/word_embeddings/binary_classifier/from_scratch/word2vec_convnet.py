@@ -71,6 +71,7 @@ plt.plot(history.history['acc'], color='r', label='train')
 plt.plot(history.history['val_acc'], color='b', label='validation')
 plt.legend(loc='best')
 
+plt.subplot(212)
 plt.title('loss')
 plt.plot(history.history['loss'], color='r', label='train')
 plt.plot(history.history['val_loss'], color='b', label='validation')
@@ -80,4 +81,4 @@ plt.tight_layout()
 plt.show()
 
 score = model.evaluate(Xtest, Ytest, verbose=1)
-print("Test score: {:3f}, accuracy: {:3f}".format(score[0], score[1]))
+print("\nTest score: {:3f}, accuracy: {:3f}".format(score[0], score[1]))
