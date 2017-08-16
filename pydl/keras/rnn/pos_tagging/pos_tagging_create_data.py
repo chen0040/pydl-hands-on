@@ -103,7 +103,7 @@ def stream_reuters_documents(reuters_dir):
     """
     parser = ReutersParser()
     for filename in glob(os.path.join(reuters_dir, "*.sgm")):
-        for doc in parser.parse(open(filename, 'rt', encoding='utf8')):
+        for doc in parser.parse(open(filename, 'rt', encoding='utf8', errors='ignore')):
             yield doc
 
 
