@@ -12,7 +12,9 @@ import numpy as np
 np.random.seed(42)
 
 INPUT_FILE = '../../../../data/umich-sentiment-train.txt'
-GLOVE_MODEL = "../../../../data/glove.6B.100d.txt"
+# the glove model file is not included in the git due to its file size, but can be
+# downloaded from https://nlp.stanford.edu/projects/glove/
+GLOVE_MODEL = "../../../../very_large_data/glove.6B.100d.txt"
 VOCAB_SIZE = 5000
 EMBED_SIZE = 100
 NUM_FILTERS = 256

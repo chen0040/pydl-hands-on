@@ -12,7 +12,10 @@ import numpy as np
 np.random.seed(42)
 
 INPUT_FILE = '../../../../data/umich-sentiment-train.txt'
-WORD2VEC_MODEL = "../../../../data/GoogleNews-vectors-negative300.bin.gz"
+
+# the google news vectors is not included in the github due to file size, but can
+# be downloaded from https://github.com/mmihaltz/word2vec-GoogleNews-vectors
+WORD2VEC_MODEL = "../../../../very_large_data/GoogleNews-vectors-negative300.bin.gz"
 VOCAB_SIZE = 5000
 EMBED_SIZE = 100
 NUM_FILTERS = 256

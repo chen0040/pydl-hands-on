@@ -11,6 +11,11 @@ Learning with Keras"
 
 # Topics
 
+* Multi-nominal Logistic Regression and Feedforward Neural Network
+
+    * Logistic Regression for MNIST application
+    * FNN for MNIST application
+
 * Convolution Neural Network
 
     * LeNet for MNIST
