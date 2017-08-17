@@ -3,9 +3,12 @@ import matplotlib.pyplot as plt
 import os
 import re
 
+VERY_LARGE_DATA_DIR = '../../../very_large_data'
 DATA_DIR = '../../../data'
 
-fid = open(os.path.join(DATA_DIR, 'LD2011_2014.txt'), 'rt')
+# this file is not included in the git due to its size, but can be downloaded
+# from https://archive.ics.uci.edu/ml/machine-learning-databases/00321/
+fid = open(os.path.join(VERY_LARGE_DATA_DIR, 'LD2011_2014.txt'), 'rt')
 data = []
 cid = 250 # for customer with id 250
 for line in fid:
