@@ -1,21 +1,22 @@
 from __future__ import division, print_function
 from keras.layers.core import Activation, Dense, SpatialDropout1D, RepeatVector
 from keras.layers.embeddings import Embedding
-from keras.layers.recurrent import GRU
-from keras.layers.wrappers import TimeDistributed
+from keras.layers.recurrent import LSTM
+from keras.layers.wrappers import TimeDistributed, Bidirectional
 from keras.models import Sequential
 from keras.metrics import top_k_categorical_accuracy
 from keras.preprocessing import sequence
 from keras.utils import np_utils
+from sklearn.model_selection import train_test_split
 import collections
 import nltk
 import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-np.random.seed(42)
-
 DATA_DIR = '../../../data'
+
+np.random.seed(42)
 
 
 def parse_sentences(filename):
@@ -38,29 +39,20 @@ def get_or_else(dictionary, key, default_value):
         return default_value
 
 
-def generate_batch(s_sents, s_word2index, t_sents, t_word2index,
-                   batch_size, maxlen):
+def generate_batch(s_sents, s_word2index, t_sents, t_word2index, batch_size,maxlen):
     while True:
-        # shuffle the input
         indices = np.random.permutation(np.arange(0, len(s_sents)))
-        ss_sents = [s_sents[ix] for ix in indices]
-        ts_sents = [t_sents[ix] for ix in indices]
-        # convert to word indices
-        si_sents = [[get_or_else(s_word2index, word, s_word2index["UNK"])
-                    for word in sent]
-                    for sent in ss_sents]
-        ti_sents = [[t_word2index[word] for word in sent]
-                    for sent in ts_sents]
-        # inner loop should run for an epoch
+        ss_sents = [s_sents[idx] for idx in indices]
+        ts_sents = [t_sents[idx] for idx in indices]
+        si_sents = [[get_or_else(s_word2index, word, s_word2index['UNK']) for word in sent] for sent in ss_sents]
+        ti_sents = [[t_word2index[word] for word in sent] for sent in ts_sents]
         num_batches = len(s_sents) // batch_size
         for i in range(num_batches):
-            s_batch = si_sents[i * batch_size : (i + 1) * batch_size]
-            t_batch = ti_sents[i * batch_size : (i + 1) * batch_size]
+            s_batch = si_sents[i * batch_size: (i+1) * batch_size]
+            t_batch = ti_sents[i * batch_size: (i+1) * batch_size]
             sp_batch = sequence.pad_sequences(s_batch, maxlen=maxlen)
             tp_batch = sequence.pad_sequences(t_batch, maxlen=maxlen)
-            tpc_batch = np_utils.to_categorical(tp_batch.reshape(-1, 1),
-                num_classes=len(t_word2index)).reshape(batch_size,
-                -1, len(t_word2index))
+            tpc_batch = np_utils.to_categorical(tp_batch.reshape(-1, 1), num_classes=len(t_word2index)).reshape(batch_size, -1, len(t_word2index))
             yield sp_batch, tpc_batch
 
 
@@ -113,9 +105,9 @@ print(len(s_sents_train), len(s_sents_test))
 model = Sequential()
 model.add(Embedding(input_dim=s_vocabsize, output_dim=EMBED_SIZE, input_length=MAX_SEQLEN))
 model.add(SpatialDropout1D(0.2))
-model.add(GRU(HIDDEN_SIZE, dropout=0.2, recurrent_dropout=0.2))
+model.add(Bidirectional(LSTM(HIDDEN_SIZE, dropout=0.2, recurrent_dropout=0.2)))
 model.add(RepeatVector(MAX_SEQLEN))
-model.add(GRU(HIDDEN_SIZE, return_sequences=True))
+model.add(Bidirectional(LSTM(HIDDEN_SIZE, return_sequences=True)))
 model.add(TimeDistributed(Dense(t_vocabsize)))
 model.add(Activation('softmax'))
 

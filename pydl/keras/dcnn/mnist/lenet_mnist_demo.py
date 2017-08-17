@@ -44,6 +44,7 @@ X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
 X_train /= 255
 X_test /= 255
+
 # we need a 60K x [1 x 28 x 28] shape as input to the CONVNET
 X_train = X_train[:, np.newaxis, :, :]
 X_test = X_test[:, np.newaxis, :, :]
@@ -52,13 +53,16 @@ print(X_test.shape[0], 'test samples')
 # convert class vectors to binary class matrices
 y_train = np_utils.to_categorical(y_train, NB_CLASSES)
 y_test = np_utils.to_categorical(y_test, NB_CLASSES)
+
 # initialize the optimizer and model
 model = LeNet.build(input_shape=INPUT_SHAPE, classes=NB_CLASSES)
 model.compile(loss='categorical_crossentropy', optimizer=OPTIMIZER, metrics=['accuracy'])
 history = model.fit(X_train, y_train, batch_size=BATCH_SIZE, epochs=NB_EPOCH, verbose=VERBOSE, validation_split=VALIDATION_SPLIT)
 score = model.evaluate(X_test, y_test, verbose=VERBOSE)
+
 print("\nTest score: ", score[0])
 print("Test accuracy: ", score[1])
+
 # list all data in history
 print(history.history.keys())
 # summarize history for accuracy
