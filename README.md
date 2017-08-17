@@ -4,7 +4,7 @@ Hands-on experiments on the various deep learning framework
 
 # Features
 
-* Update many tiny changes in codes for uses with the latest Keras and Tensorflow as originally described in the book "Deep
+* Update many tiny changes in codes for uses with python 3 and the latest Keras and Tensorflow as originally described in the book "Deep
 Learning with Keras"
 * Works with python 3.6 and keras 2.0.6
 * Data files included
@@ -32,7 +32,7 @@ Learning with Keras"
     * DCNN with word embedding for sentiment analysis
     * skipgrams and cbow
     * gensim training and loading of word embedding models
-    * gensim-pretrained lookup with FNN for sentiment analysis
+    * gensim-pretrained word embedding lookup with FNN for sentiment analysis
     * glove-pretrained word embedding lookup with FNN for sentiment analysis
     
 * Recurrent Neural Network
@@ -46,5 +46,7 @@ Learning with Keras"
 
     * Sample application on predicting benzene level in the air
     
-* 
+* Auto-encoder
+
+    * LSTM-based auto encoder for sentence embedding
 

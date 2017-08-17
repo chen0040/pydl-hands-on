@@ -63,7 +63,7 @@ validation_generator = test_datagen.flow_from_directory(
     class_mode="categorical")
 
 # Save the model according to the conditions
-checkpoint = ModelCheckpoint("vgg16_1.h5", monitor='val_acc', verbose=1, save_best_only=True, save_weights_only=False,
+checkpoint = ModelCheckpoint("../../../cache/vgg16_1.h5", monitor='val_acc', verbose=1, save_best_only=True, save_weights_only=False,
                              mode='auto', period=1)
 early = EarlyStopping(monitor='val_acc', min_delta=0, patience=10, verbose=1, mode='auto')
 

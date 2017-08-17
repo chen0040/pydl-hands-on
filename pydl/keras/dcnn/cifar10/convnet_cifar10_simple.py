@@ -56,8 +56,8 @@ print('Test accuracy:', score[1])
 
 # save model
 model_json = model.to_json()
-open('/tmp/cifar10_architecture.json','w').write(model_json)
-model.save_weights('/tmp/cifar10_weights.h5', overwrite=True)
+open('../../../cache/cifar10_architecture.json','w').write(model_json)
+model.save_weights('../../../cache/cifar10_weights.h5', overwrite=True)
 
 # list all data in history
 print(history.history.keys())

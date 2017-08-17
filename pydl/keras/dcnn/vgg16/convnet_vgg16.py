@@ -58,13 +58,13 @@ def VGG_16(weight_path=None):
     return model
 
 if __name__ == "__main__":
-    im = scipy.misc.imresize(scipy.misc.imread('cat.jpg'), (224, 224)).astype('float32')
+    im = scipy.misc.imresize(scipy.misc.imread('../../../data/cat.jpg'), (224, 224)).astype('float32')
     im = np.transpose(im, (2,0,1))
     im = np.expand_dims(im, axis=0)
     K.set_image_dim_ordering("th")
 
     # Test pretrained model
-    model = VGG_16('/tmp/vgg16_weights.h5')
+    model = VGG_16('../../../cache/vgg16_weights.h5')
     optimizer = SGD()
     model.compile(optimizer=optimizer, loss='categorical_crossentropy')
     out = model.predict(im)
