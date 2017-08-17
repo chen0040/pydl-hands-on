@@ -49,4 +49,8 @@ Learning with Keras"
 * Auto-encoder
 
     * LSTM-based auto encoder for sentence embedding
+    
+* Deep Reinforcement Learning
+
+    * Deep Q-Learn Network for Pong Game (using ConvNet for Q function approximation)
 
