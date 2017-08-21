@@ -42,9 +42,21 @@
     * Text Classification
     * Auto encoder Sentence Embedding
     * Speech Recognition
+    
+# Similarity Search
+
+* [faiss](https://code.facebook.com/posts/1373769912645926/faiss-a-library-for-efficient-similarity-search/)
+    * Similarity search for images
+    * Python / C++
+
+# Timeseries
+
+* [Beringei](https://code.facebook.com/posts/952820474848503/beringei-a-high-performance-time-series-storage-engine/)
+    * Timeseries Storage Engine
    
 # Others
 
 * [gloo](https://github.com/facebookincubator/gloo)
     * Cross machine GPU-to-GPU memory transfer
     * Collective algorithms for machine learning distributed computation
+    
