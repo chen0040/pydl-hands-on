@@ -2,6 +2,7 @@ from theano import tensor as T
 import numpy as np
 import theano
 import theano.printing
+from theano import shared
 
 theano.config.floatX = 'float32'
 
@@ -14,3 +15,6 @@ b = a ** 2
 sq = theano.function([a], b)
 
 print(theano.printing.debugprint(sq))
+
+state = shared(0)
+print(state)

@@ -3,8 +3,6 @@ from theano import printing
 import theano.tensor as T
 import numpy as np
 
-print(theano.config.device)
-print(theano.config.floatX)
 print(T.scalar())
 print(T.iscalar())
 print(T.fscalar())

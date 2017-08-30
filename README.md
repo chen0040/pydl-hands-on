@@ -8,6 +8,7 @@ Hands-on experiments on the various deep learning framework
 Learning with Keras"
 * Works with python 3.6 and keras 2.0.6
 * Data files included
+* Examples in Theano, Keras
 
 # Topics
 
