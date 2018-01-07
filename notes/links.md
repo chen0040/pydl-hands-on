@@ -8,3 +8,7 @@ https://github.com/roatienza/Deep-Learning-Experiments
 
 https://databricks.com/blog/2017/06/06/databricks-vision-simplify-large-scale-deep-learning.html
 https://github.com/databricks/spark-deep-learning
+
+# Awesome ML Projects
+
+http://www.gitxiv.com
