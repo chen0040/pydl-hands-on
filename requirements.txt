@@ -1,0 +1,7 @@
+keras
+tensorflow
+scikit-learn
+nltk
+numpy
+scipy
+pillow
