@@ -5,3 +5,5 @@ nltk
 numpy
 scipy
 pillow
+matplotlib
+mxnet

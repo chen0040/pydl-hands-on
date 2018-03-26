@@ -1,11 +1,6 @@
 .idea/
 *.iml
 
-pydl/cache/*
-!pydl/cache/ReadMe.md
-pydl/very_large_data/*
-
-MNIST_data/
 .vagrant/
 
 # Byte-compiled / optimized / DLL files
