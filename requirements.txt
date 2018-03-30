@@ -6,4 +6,4 @@ numpy
 scipy
 pillow
 matplotlib
-mxnet
+mxnet-cu90
