@@ -1,6 +1,6 @@
 import mxnet as mx
 from mxnet import nd
-
+import numpy as np
 
 def main():
     probabilities = nd.ones(shape=(6, )) / 6
@@ -32,6 +32,10 @@ def main():
     plt.axhline(y=0.16666, color='black', linestyle='dashed')
     plt.legend()
     plt.show()
+
+    a = np.arange(20)
+    print(a)
+    print(a[:-1])
 
 
 if __name__ == '__main__':
