@@ -1,7 +1,6 @@
 import mxnet as mx
 from mxnet import nd
 
-
 def main():
     mx.random.seed(1)
     x = nd.empty((3, 4))
