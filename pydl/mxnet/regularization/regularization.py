@@ -44,14 +44,14 @@ def net(X):
 def cross_entropy(yhat, y):
     return -nd.sum(y * nd.log(yhat), axis=0, exclude=True)
 
-def penalty_l2():
+def penalty_l2(params):
     penalty = nd.zeros(shape=1)
     for param in params:
         penalty = penalty + nd.sum(param ** 2)
     return penalty
 
 
-def SGD(lr):
+def SGD(params, lr):
     for param in params:
         param[:] = param - lr * param.grad
 
@@ -117,9 +117,9 @@ for e in range(epochs):
         label_one_hot = nd.one_hot(label, 10)
         with autograd.record():
             output = net(data)
-            loss = cross_entropy(output, label_one_hot) + l2_strength * penalty_l2()
+            loss = cross_entropy(output, label_one_hot) + l2_strength * penalty_l2(params)
         loss.backward()
-        SGD(0.001)
+        SGD(params, 0.001)
 
         niter += 1
         moving_loss = 0.99 * moving_loss + .01 * nd.sum(loss).asscalar()
